@@ -43,7 +43,6 @@
 
 # Top-level functions that can only be used by Kotlin.
 -dontwarn retrofit2.KotlinExtensions
--dontwarn retrofit2.KotlinExtensions$*
 
 # With R8 full mode, it sees no subtypes of Retrofit interfaces since they are created with a Proxy
 # and replaces all potential values with null. Explicitly keeping the interfaces prevents this.
@@ -62,9 +61,13 @@
 **[] $VALUES;
 public *;
 }
--keep class kotlin.reflect.jvm.internal.impl.builtins.BuiltInsLoaderImpl
 
 -keep class kotlin.Metadata { *; }
 -keepclassmembers class kotlin.Metadata {
     public <methods>;
+}
+
+-keepclasseswithmembers class com.dicoding.core.data.remote.response.** {
+    public ** component1();
+    <fields>;
 }
