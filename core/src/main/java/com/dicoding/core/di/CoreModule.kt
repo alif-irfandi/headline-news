@@ -11,6 +11,8 @@ import com.dicoding.core.domain.repository.INewsRepository
 import com.dicoding.core.utils.AppExecutors
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -22,12 +24,15 @@ import java.util.concurrent.TimeUnit
 val databaseModule = module {
     factory { get<NewsDatabase>().newsDatabaseDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("alif".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             NewsDatabase::class.java,
             "news.db"
         )
             .fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
             .build()
     }
 }
