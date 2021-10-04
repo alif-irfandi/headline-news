@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Headline News</string>
+    <string name="title_favorite">Favorite</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="add_to_favorite">Add To Favorite</string>
+    <string name="icon_no_network">Icon No Network</string>
+    <string name="no_connection">Tidak ada koneksi</string>
+    <string name="image_container_headline">Image Container Headline</string>
+    <string name="favorite">Favorite</string>
+    <string name="belum_ada_berita_disimpan">Belum ada berita disimpan</string>
+    <string name="icon_empty_favorite">Icon Empty Favorite</string>
+    <string name="thumbnail_image">Thumbnail Image</string>
+
+</resources>
